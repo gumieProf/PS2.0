@@ -1,10 +1,10 @@
 const path = require('path');
 
 module.exports = {
-  entry: './renderer.js',
+  entry: './index.js',
   mode: 'production',
   output: {
-    filename: 'rendererOP.js',
+    filename: 'indexOP.js',
     path: path.resolve(__dirname, 'dist'),
   },
   module: {
