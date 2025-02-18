@@ -30,22 +30,22 @@ var texts = []
 var canvas;
 var cvs;
 $(function(){
-   canvas = document.querySelector("canvas");
-   cvs = canvas.getContext('2d');
-   cvs.fillStyle = "#fff";
-   cvs.fillRect(0,0, canvas.height,canvas.width);
-  function get(){
+ canvas = document.querySelector("canvas");
+ cvs = canvas.getContext('2d');
+ cvs.fillStyle = "#fff";
+ cvs.fillRect(0,0, canvas.height,canvas.width);
+ function get(){
   if($("li").length){
     $("li").each(function(){
       var inp= $(this).children("input");
       texts.push(inp.val());
     });
     draw()
-}else{
-  cvs.clearRect(0,0,canvas.height,canvas.width);
-  cvs.fillStyle = "#fff";
-  cvs.fillRect(0,0, canvas.height,canvas.width);
-}
+  }else{
+    cvs.clearRect(0,0,canvas.height,canvas.width);
+    cvs.fillStyle = "#fff";
+    cvs.fillRect(0,0, canvas.height,canvas.width);
+  }
 }
 function draw(){
   cvs.clearRect(0,0,canvas.height,canvas.width);
