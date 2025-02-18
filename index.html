@@ -29,17 +29,34 @@ SOFTWARE.
 <head>
   <meta charset="UTF-8" />
   <title>PFつくる</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./fonts/fontawesome-free-6.7.2-web/css/all.min.css">
   <style>
-    @font-face {
-  font-family: "NSJ";
-  src: url("./fonts/Noto_Sans_JP/NotoSansJP-VariableFont_wght.ttf") format("truetype");
-}
     body{
-      font-family: "NSJ";
+      font-family: "Noto Sans JP";
       text-align: center;
       background-color:#888;
       color: black;
     }
+input[type=checkbox] { display:none; } /* to hide the checkbox itself */
+input[type=checkbox] + label:before {
+  font-family: FontAwesome;
+  display: inline-block;
+}
+
+input[type=checkbox] + label:before { content: "\f0c8"; } /* unchecked icon */
+input[type=checkbox] + label:before {
+  font-size: 30px;
+   letter-spacing: 10px; 
+  } /* space between checkbox and label */
+
+input[type=checkbox]:checked + label:before {
+   content: "\f14a"; 
+  } /* checked icon */
+input[type=checkbox]:checked + label:before {
+   letter-spacing: 5px; 
+   font-size: 30px;
+  } /* allow space for check mark */
     canvas{
       border: solid 30px white;
       border-radius: 10px;
@@ -77,22 +94,21 @@ SOFTWARE.
       font-weight: bold;
     }
     .del{
+      position: relative;
+      top: 10px;
       font-size: 30px;
       font-weight: bold;
-      height: 50px;
-      width: 50px;
       text-decoration: none;
-      background: red;
-      color: white;
-      border-radius: 50%;
-      display:flex;
+      color: red;
+
    align-items:center;
    justify-content:center;
     }
     .NSJ{
-      font-family: "NSJ";
+      font-family: "Noto Sans JP";
     }
   </style>
+  
 </head>
 <body>
   <canvas height="500px" width="500px"></canvas>
@@ -100,8 +116,10 @@ SOFTWARE.
   <ul></ul>
   <a href="#" id="addSolo" class="btn">ソロテキスト</a>
   <select id="font">
-    <option value="NSJ" class="NSJ" selected>Noto Sans JP</option>
+    <option value="Noto Sans JP" class="NSJ" selected>Noto Sans JP</option>
   </select>
+  <input id="bold" type="checkbox" />
+  <label for="bold">太字</label>
 </body>
 <script src="./dist/indexOP.js"></script>
 </html>

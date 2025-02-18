@@ -48,12 +48,16 @@ $(function(){
   }
 }
 function draw(){
-  var sct=$("font").value()
+  var sct=$("font").value;
   cvs.clearRect(0,0,canvas.height,canvas.width);
   cvs.fillStyle = "#fff";
   cvs.fillRect(0,0, canvas.height,canvas.width);
   var y=50;
-  cvs.font="bold 50px "+sct
+  if($("#bold").prop("checked")){
+    cvs.font="bold 50px "+sct;
+  }else{
+    cvs.font="50px "+sct;
+  }
   cvs.fillStyle = "#000";
   for (let index = 0; index < texts.length; index++) {
     cvs.fillText(texts[index], 20,y);
@@ -66,7 +70,7 @@ $("#addSolo").click(function(){
   var list = $("ul");
   var elem=$("<li class='solo input'></li>");
   var input = $("<input type='text'>");
-  var btn = $("<div class='del'><a href='#'>X</a></div>");
+  var btn = $("<a href='#' class='del'>X</a>");
   elem.append(input);
   elem.append(btn);
   list.append(elem);
@@ -79,6 +83,12 @@ $("#addSolo").click(function(){
   return false;
 });
 $(document).on("keyup", ".input>input", function(){
+  get();
+});
+$(document).on("click",".del",function(){
+  get();
+})
+$('#bold, #font').change(function(){
   get();
 });
 });
