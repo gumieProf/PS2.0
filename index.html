@@ -30,9 +30,15 @@ SOFTWARE.
   <meta charset="UTF-8" />
   <title>PFつくる</title>
   <style>
+    @font-face {
+  font-family: "NSJ";
+  src: url("./fonts/Noto_Sans_JP/NotoSansJP-VariableFont_wght.ttf") format("truetype");
+}
     body{
+      font-family: "NSJ";
       text-align: center;
       background-color:#888;
+      color: black;
     }
     canvas{
       border: solid 30px white;
@@ -44,12 +50,23 @@ SOFTWARE.
     input{
       font-size: 30px;
       margin: 5px;
+      position: relative;
+      top:10px;
       border-radius: 3px;
       border: #000 3px;
+      font-weight: bold;
+    }
+    select{
+      font-size: 30px;
+      margin: 50px;
+      border-radius: 3px;
+      border: black 3px;
+      font-weight: bold;
     }
     .btn{
       position: relative;
       left: 10px;
+      top: 10px;
       font: bold;
       font-size: 40px;
       background-color: #fff;
@@ -57,14 +74,34 @@ SOFTWARE.
       color: #000;
       padding: 10px;
       border-radius: 5px;
+      font-weight: bold;
+    }
+    .del{
+      font-size: 30px;
+      font-weight: bold;
+      height: 50px;
+      width: 50px;
+      text-decoration: none;
+      background: red;
+      color: white;
+      border-radius: 50%;
+      display:flex;
+   align-items:center;
+   justify-content:center;
+    }
+    .NSJ{
+      font-family: "NSJ";
     }
   </style>
 </head>
 <body>
   <canvas height="500px" width="500px"></canvas>
   <br>
-  <a href="#" id="addSolo" class="btn">ソロテキスト</a>
   <ul></ul>
+  <a href="#" id="addSolo" class="btn">ソロテキスト</a>
+  <select id="font">
+    <option value="NSJ" class="NSJ" selected>Noto Sans JP</option>
+  </select>
 </body>
 <script src="./dist/indexOP.js"></script>
 </html>

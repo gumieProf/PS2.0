@@ -48,11 +48,12 @@ $(function(){
   }
 }
 function draw(){
+  var sct=$("font").value()
   cvs.clearRect(0,0,canvas.height,canvas.width);
   cvs.fillStyle = "#fff";
   cvs.fillRect(0,0, canvas.height,canvas.width);
   var y=50;
-  cvs.font="50px Roboto medium"
+  cvs.font="bold 50px "+sct
   cvs.fillStyle = "#000";
   for (let index = 0; index < texts.length; index++) {
     cvs.fillText(texts[index], 20,y);
@@ -65,7 +66,7 @@ $("#addSolo").click(function(){
   var list = $("ul");
   var elem=$("<li class='solo input'></li>");
   var input = $("<input type='text'>");
-  var btn = $("<a href='#'>X</a>");
+  var btn = $("<div class='del'><a href='#'>X</a></div>");
   elem.append(input);
   elem.append(btn);
   list.append(elem);
