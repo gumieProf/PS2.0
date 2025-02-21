@@ -29,11 +29,9 @@ SOFTWARE.
 <head>
   <meta charset="UTF-8" />
   <title>PFつくる</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./fonts/fontawesome-free-6.7.2-web/css/all.min.css">
   <style>
     body{
-      font-family: "Noto Sans JP";
       text-align: center;
       background-color:#888;
       color: black;
@@ -104,8 +102,11 @@ input[type=checkbox]:checked + label:before {
    align-items:center;
    justify-content:center;
     }
-    .NSJ{
-      font-family: "Noto Sans JP";
+    .sans{
+      font-family: sans-serif;
+    }
+    .serif{
+      font-family: serif;
     }
   </style>
   
@@ -116,7 +117,8 @@ input[type=checkbox]:checked + label:before {
   <ul></ul>
   <a href="#" id="addSolo" class="btn">ソロテキスト</a>
   <select id="font">
-    <option value="Noto Sans JP" class="NSJ" selected>Noto Sans JP</option>
+    <option value="sans-serif" class="sans" selected>角ゴシック</option>
+    <option value="serif" class="serif" >明朝体</option>
   </select>
   <input id="bold" type="checkbox" />
   <label for="bold">太字</label>

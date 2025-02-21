@@ -40,15 +40,11 @@ $(function(){
       var inp= $(this).children("input");
       texts.push(inp.val());
     });
-    draw()
-  }else{
-    cvs.clearRect(0,0,canvas.height,canvas.width);
-    cvs.fillStyle = "#fff";
-    cvs.fillRect(0,0, canvas.height,canvas.width);
   }
-}
+  draw()
+ }
 function draw(){
-  var sct=$("font").value;
+  var sct=$("#font").value;
   cvs.clearRect(0,0,canvas.height,canvas.width);
   cvs.fillStyle = "#fff";
   cvs.fillRect(0,0, canvas.height,canvas.width);
@@ -59,8 +55,8 @@ function draw(){
     cvs.font="50px "+sct;
   }
   cvs.fillStyle = "#000";
-  for (let index = 0; index < texts.length; index++) {
-    cvs.fillText(texts[index], 20,y);
+  for (var txt of texts) {
+    cvs.fillText(txt, 20,y);
     y=y+50;
   }
   var y=0;
@@ -70,7 +66,7 @@ $("#addSolo").click(function(){
   var list = $("ul");
   var elem=$("<li class='solo input'></li>");
   var input = $("<input type='text'>");
-  var btn = $("<a href='#' class='del'>X</a>");
+  var btn = $("<a href='#' class='del'><i class='fa-solid fa-circle-xmark'></i></a>");
   elem.append(input);
   elem.append(btn);
   list.append(elem);
@@ -85,7 +81,7 @@ $("#addSolo").click(function(){
 $(document).on("keyup", ".input>input", function(){
   get();
 });
-$(document).on("click",".del",function(){
+$(document).on("click", ".del", function(){
   get();
 })
 $('#bold, #font').change(function(){
