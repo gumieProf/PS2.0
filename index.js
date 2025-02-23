@@ -29,6 +29,7 @@ var $ = jquery
 var texts = []
 var canvas;
 var cvs;
+var Defx = 20;
 $(function(){
  canvas = document.querySelector("canvas");
  cvs = canvas.getContext('2d');
@@ -38,17 +39,21 @@ $(function(){
   if($("li").length){
     $("li").each(function(){
       var inp= $(this).children("input");
-      texts.push(inp.val());
+      var obj = {
+        text:inp.val(),
+        x:Defx
+      }
+      texts.push(obj);
     });
   }
   draw()
  }
 function draw(){
+  var y=50;
   var sct=$("#font").value;
   cvs.clearRect(0,0,canvas.height,canvas.width);
   cvs.fillStyle = "#fff";
   cvs.fillRect(0,0, canvas.height,canvas.width);
-  var y=50;
   if($("#bold").prop("checked")){
     cvs.font="bold 50px "+sct;
   }else{
@@ -56,7 +61,7 @@ function draw(){
   }
   cvs.fillStyle = "#000";
   for (var txt of texts) {
-    cvs.fillText(txt, 20,y);
+    cvs.fillText(txt.text, txt.x,y);
     y=y+50;
   }
   var y=0;
