@@ -35,7 +35,20 @@ $(function(){
  cvs = canvas.getContext('2d');
  cvs.fillStyle = "#fff";
  cvs.fillRect(0,0, canvas.height,canvas.width);
- function get(){
+ async function get(){
+  // Reset canvas
+  cvs.clearRect(0,0,canvas.height,canvas.width);
+  cvs.fillStyle = "#fff";
+  cvs.fillRect(0,0, canvas.height,canvas.width);
+  cvs.fillStyle = "#000";
+  // Set font
+  var sct=$("#font").value;
+  if($("#bold").prop("checked")){
+    cvs.font="bold 50px "+sct;
+  }else{
+    cvs.font="50px "+sct;
+  }
+  // get texts
   if($("li").length){
     $("li").each(function(){
       var inp= $(this).children("input");
@@ -46,26 +59,21 @@ $(function(){
       texts.push(obj);
     });
   }
-  draw()
  }
-function draw(){
+async function draw(){
+  // Set first potision
   var y=50;
-  var sct=$("#font").value;
-  cvs.clearRect(0,0,canvas.height,canvas.width);
-  cvs.fillStyle = "#fff";
-  cvs.fillRect(0,0, canvas.height,canvas.width);
-  if($("#bold").prop("checked")){
-    cvs.font="bold 50px "+sct;
-  }else{
-    cvs.font="50px "+sct;
-  }
-  cvs.fillStyle = "#000";
+  // Draw texts
   for (var txt of texts) {
     cvs.fillText(txt.text, txt.x,y);
     y=y+50;
   }
-  var y=0;
+  // Reset texts
   texts=[]
+}
+async function main() {
+  await get()
+  await draw()
 }
 $("#addSolo").click(function(){
   var list = $("ul");
@@ -78,18 +86,18 @@ $("#addSolo").click(function(){
   btn.click(function(){
     var list = $(this).parent();
     list.remove();
-    get();
+    main();
     return false;
   });
   return false;
 });
 $(document).on("keyup", ".input>input", function(){
-  get();
+  main();
 });
 $(document).on("click", ".del", function(){
-  get();
+  main();
 })
 $('#bold, #font').change(function(){
-  get();
+  main();
 });
 });
